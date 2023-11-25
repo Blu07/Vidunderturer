@@ -1,105 +1,173 @@
-main {
-  display: grid;
-  grid-auto-rows: 250px;
-  row-gap: 10px;
+$color: #18191a;
+$background-color: rgb(251, 250, 235);
 
+$row-height: 400px;
+$row-content-width: 1000px;
+$row-gap: 40px;
+$column-gap: 30px;
+
+$image-area-width: 7fr;
+$content-area-width: 4fr;
+
+$heading-area-height: 70px;
+$buttons-area-height: 70px;
 
 html {
-  color: #18191a;
-  background-color: rgb(251, 250, 235);
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: $color;
+  background-color: $background-color;
 }
 
 body {
-  margin: 0;
+  // margin på sidene er 0px for at bildene går helt til siden.
+  margin: 20px 0px;
 }
 
-
-
-.row {
+main {
   display: grid;
-  width: 100%;
-  height: 250px;
-  overflow: hidden;
-  box-sizing: border-box;
-}
+  grid-auto-rows: $row-height;
 
-.content {
-  display: flex;
-  flex-flow: column nowrap;
-  width: 100%;
-  height: inherit;
-  max-height: 250px;
-  justify-self: center;
-}
+  .row {
+    display: flex;
+    flex-flow: column nowrap;
 
-.image {
-  max-height: 250px;
-  padding: 10px 0;
-  box-sizing: border-box;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    height: $row-height;
 
-  > img {
-    position: relative;
-    bottom: 50%;
-    width: 100%;
-    border-radius: 8px;
-    height: inherit;
-    object-fit: cover;
-    transition: transform 400ms;
+    overflow: hidden;
+    box-sizing: border-box;
+    align-items: center;
 
-    &:hover {
-      transform: scale(1.1);
+    .content-block {
+      display: flex;
+      flex-flow: column nowrap;
+
+      width: 100%;
+      height: inherit;
+      max-height: $row-height;
+      column-gap: $column-gap;
+
+      grid-template-columns: $image-area-width $content-area-width;
+      box-sizing: border-box;
+
+      .image-area {
+        display: flex;
+
+        max-height: $row-height;
+
+        overflow: hidden;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          position: relative;
+          width: 100%;
+          height: inherit;
+          border-radius: none;
+
+          object-fit: cover;
+          transition: transform 400ms 0s;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.09);
+          }
+        }
+      }
+
+      .desc-area {
+        font-size: larger;
+        line-height: 1.6;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        display: none;
+
+        box-sizing: border-box;
+        overflow: hidden;
+
+        grid-template-rows: $heading-area-height 1fr $buttons-area-height;
+        grid-template-columns: 1fr;
+
+        h2 {
+          display: flex;
+          grid-column: 1 / 2;
+          grid-row: 1;
+
+          margin: 0px;
+
+          box-sizing: border-box;
+          align-items: center;
+        }
+
+        p {
+          display: flex;
+          overflow: hidden;
+          max-height: calc(
+            $row-height - $heading-area-height - $buttons-area-height
+          );
+          grid-column: 1 / 2;
+          grid-row: 2;
+          margin-top: 0px;
+          margin-bottom: 10px;
+        }
+
+        .buttons {
+          display: flex;
+          column-gap: 10px;
+
+          align-items: center;
+          justify-content: center;
+
+          * {
+            width: 100px;
+            height: 40px;
+            box-sizing: border-box;
+
+            background-color: transparent;
+            color: rgb(3, 68, 121);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+
+            border: 2px solid #2881bd;
+            border-radius: 5px;
+
+            cursor: pointer;
+            transition: color 0.3s, border-color 0.3s;
+
+            &:hover {
+              color: $color;
+              border-color: $color;
+            }
+          }
+        }
+      }
     }
   }
 }
 
-.desc {
-  max-height: 250px;
-  display: none;
-}
+@media only screen and (min-width: calc($row-content-width + 50px)) {
+  main {
+    row-gap: $row-gap;
 
-@media only screen and (min-width: 868px) {
-  .row {
-    overflow: visible;
-  }
-  
-  .content {
-    display: grid;
-    column-gap: 25px;
-    grid-template-columns: repeat(2, 1fr);
-    width: 800px;
-    height: inherit;
-    max-height: 250px;
-    box-sizing: border-box;
-    justify-self: center;
-  }
-  
-  .image {
-    overflow: visible;
-    height: 100%;
-  }
+    .row {
+      overflow: visible;
 
-  .image > img {
-    height: inherit;
-    object-fit: auto;
-    bottom: auto;
-    right: auto;
-  }
+      .content-block {
+        display: grid;
+        width: $row-content-width;
 
-  .desc {
-    max-height: 250px;
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-height: 250px;
-    padding: 10px 0;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-}
+        .image-area {
+          overflow: visible;
+          height: 100%;
 
+          img {
+            border-radius: 8px;
+            object-fit: cover;
+          }
+        }
+
+        .desc-area {
+          display: grid;
+        }
+      }
+    }
+  }
 }

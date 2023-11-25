@@ -1,91 +1,127 @@
-main {
-  display: grid;
-  grid-auto-rows: 250px;
-  row-gap: 10px;
-}
-main html {
+html {
   color: #18191a;
   background-color: rgb(251, 250, 235);
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-main body {
-  margin: 0;
+
+body {
+  margin: 20px 0px;
+}
+
+main {
+  display: grid;
+  grid-auto-rows: 400px;
 }
 main .row {
-  display: grid;
-  width: 100%;
-  height: 250px;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 400px;
   overflow: hidden;
   box-sizing: border-box;
+  align-items: center;
 }
-main .content {
+main .row .content-block {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
   height: inherit;
-  max-height: 250px;
-  justify-self: center;
-}
-main .image {
-  max-height: 250px;
-  padding: 10px 0;
+  max-height: 400px;
+  column-gap: 30px;
+  grid-template-columns: 7fr 4fr;
   box-sizing: border-box;
-  overflow: hidden;
+}
+main .row .content-block .image-area {
   display: flex;
+  max-height: 400px;
+  overflow: hidden;
+  box-sizing: border-box;
   justify-content: center;
   align-items: center;
 }
-main .image > img {
+main .row .content-block .image-area img {
   position: relative;
-  bottom: 50%;
   width: 100%;
-  border-radius: 8px;
   height: inherit;
-  -o-object-fit: cover;
-     object-fit: cover;
-  transition: transform 400ms;
+  border-radius: none;
+  object-fit: cover;
+  transition: transform 400ms 0s;
+  cursor: pointer;
 }
-main .image > img:hover {
-  transform: scale(1.1);
+main .row .content-block .image-area img:hover {
+  transform: scale(1.09);
 }
-main .desc {
-  max-height: 250px;
+main .row .content-block .desc-area {
+  font-size: larger;
+  line-height: 1.6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  grid-template-rows: 70px 1fr 70px;
+  grid-template-columns: 1fr;
 }
-@media only screen and (min-width: 868px) {
+main .row .content-block .desc-area h2 {
+  display: flex;
+  grid-column: 1/2;
+  grid-row: 1;
+  margin: 0px;
+  box-sizing: border-box;
+  align-items: center;
+}
+main .row .content-block .desc-area p {
+  display: flex;
+  overflow: hidden;
+  max-height: 260px;
+  grid-column: 1/2;
+  grid-row: 2;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+main .row .content-block .desc-area .buttons {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+main .row .content-block .desc-area .buttons * {
+  width: 100px;
+  height: 40px;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: rgb(3, 68, 121);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  border: 2px solid #2881bd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+main .row .content-block .desc-area .buttons *:hover {
+  color: #18191a;
+  border-color: #18191a;
+}
+
+@media only screen and (min-width: 1050px) {
+  main {
+    row-gap: 40px;
+  }
   main .row {
     overflow: visible;
   }
-  main .content {
+  main .row .content-block {
     display: grid;
-    -moz-column-gap: 25px;
-         column-gap: 25px;
-    grid-template-columns: repeat(2, 1fr);
-    width: 800px;
-    height: inherit;
-    max-height: 250px;
-    box-sizing: border-box;
-    justify-self: center;
+    width: 1000px;
   }
-  main .image {
+  main .row .content-block .image-area {
     overflow: visible;
     height: 100%;
   }
-  main .image > img {
-    height: inherit;
-    -o-object-fit: auto;
-       object-fit: auto;
-    bottom: auto;
-    right: auto;
+  main .row .content-block .image-area img {
+    border-radius: 8px;
+    object-fit: cover;
   }
-  main .desc {
-    max-height: 250px;
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-height: 250px;
-    padding: 10px 0;
-    box-sizing: border-box;
-    overflow: hidden;
+  main .row .content-block .desc-area {
+    display: grid;
   }
-}/*# sourceMappingURL=turer.css.map */
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22turer.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAcA;EACE,OAfM;EAgBN,kBAfiB;;;AAkBnB;EAEE;;;AAGF;EACE;EACA,gBAvBW;;AAyBX;EACE;EACA;EAEA,QA7BS;EA+BT;EACA;EACA;;AAEA;EACE;EACA;EAEA;EACA;EACA,YAzCO;EA0CP,YAvCO;EAyCP;EACA;;AAEA;EACE;EAEA,YAlDK;EAoDL;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EAEA;EACA;EACA;;AAEA;EACE;;AAKN;EACE;EACA;EACA;EACA;EAEA;EACA;EAEA;EACA;;AAEA;EACE;EACA;EACA;EAEA;EAEA;EACA;;AAGF;EACE;EACA;EACA;EAGA;EACA;EACA;EACA;;AAGF;EACE;EACA;EAEA;EACA;;AAEA;EACE;EACA;EACA;EAEA;EACA;EACA;EACA;EAEA;EACA;EAEA;EACA;;AAEA;EACE,OAvIN;EAwIM,cAxIN;;;AAiJR;EACE;IACE,SA9IM;;EAgJN;IACE;;EAEA;IACE;IACA,OAtJY;;EAwJZ;IACE;IACA;;EAEA;IACE;IACA;;EAIJ;IACE%22,%22file%22:%22turer.css%22%7D */
