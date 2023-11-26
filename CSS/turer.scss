@@ -1,8 +1,9 @@
 $color: #18191a;
 $background-color: rgb(251, 250, 235);
 
-$row-height: 400px;
+$row-height: 450px;
 $row-content-width: 1000px;
+
 $row-gap: 40px;
 $column-gap: 30px;
 
@@ -27,43 +28,50 @@ main {
   grid-auto-rows: $row-height;
 
   .row {
+    // Bruker flexbox slik at align-items fungerer
     display: flex;
     flex-flow: column nowrap;
 
     height: $row-height;
 
+    // overflow hidden ved smal skjerm, visible ved bred skjerm
     overflow: hidden;
     box-sizing: border-box;
     align-items: center;
 
     .content-block {
+      // bruker flexbox for smal skjerm, grid for bred
       display: flex;
       flex-flow: column nowrap;
 
-      width: 100%;
+      width: 100svw;
       height: inherit;
       max-height: $row-height;
       column-gap: $column-gap;
 
+      // Regulere forhold mellom bildet og teksten
       grid-template-columns: $image-area-width $content-area-width;
       box-sizing: border-box;
 
       .image-area {
+        
+        // Bildet er i modten, og passer perfekt til rammen
         display: flex;
-
-        max-height: $row-height;
-
         overflow: hidden;
         box-sizing: border-box;
         justify-content: center;
         align-items: center;
+        
+        // Avgrenser høyden på bildet
+        max-height: $row-height;
+        height: 100%;
 
         img {
-          position: relative;
           width: 100%;
           height: inherit;
-          border-radius: none;
-
+          border-radius: 8px;
+          
+          // Større bilde når musepeker er over det
           object-fit: cover;
           transition: transform 400ms 0s;
           cursor: pointer;
@@ -78,11 +86,14 @@ main {
         font-size: larger;
         line-height: 1.6;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+        
+        // Ikke vis ved smal skjerm, grid ved bred skjerm
         display: none;
 
         box-sizing: border-box;
         overflow: hidden;
 
+        // Dele opp for overskrift, informasjon og knapper
         grid-template-rows: $heading-area-height 1fr $buttons-area-height;
         grid-template-columns: 1fr;
 
@@ -98,11 +109,7 @@ main {
         }
 
         p {
-          display: flex;
           overflow: hidden;
-          max-height: calc(
-            $row-height - $heading-area-height - $buttons-area-height
-          );
           grid-column: 1 / 2;
           grid-row: 2;
           margin-top: 0px;
@@ -117,18 +124,20 @@ main {
           justify-content: center;
 
           * {
+            // Størrelse
             width: 100px;
             height: 40px;
             box-sizing: border-box;
 
+            // Design
             background-color: transparent;
             color: rgb(3, 68, 121);
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-weight: bold;
-
             border: 2px solid #2881bd;
             border-radius: 5px;
 
+            // Endre farge når musepeker er over knappen
             cursor: pointer;
             transition: color 0.3s, border-color 0.3s;
 
@@ -143,6 +152,7 @@ main {
   }
 }
 
+// Om skjermen er bredere enn 50px mer enn innholdets bredde
 @media only screen and (min-width: calc($row-content-width + 50px)) {
   main {
     row-gap: $row-gap;
@@ -156,12 +166,6 @@ main {
 
         .image-area {
           overflow: visible;
-          height: 100%;
-
-          img {
-            border-radius: 8px;
-            object-fit: cover;
-          }
         }
 
         .desc-area {
