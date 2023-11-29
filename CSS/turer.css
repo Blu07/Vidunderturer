@@ -1,21 +1,28 @@
-.h1 {
-  display: flex;
-  justify-content: center;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
 html {
   color: #18191a;
   background-color: rgb(251, 250, 235);
 }
 
 body {
-  margin: 20px 0px;
+  margin: 0px 0px 20px;
+}
+
+.h1 {
+  display: flex;
+  justify-content: center;
+  width: 100svw;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: larger;
+  overflow: hidden;
+}
+.h1 h1 {
+  max-width: 90svw;
 }
 
 main {
   display: grid;
   grid-auto-rows: 450px;
+  row-gap: 20px;
 }
 main .row {
   display: flex;
@@ -28,7 +35,7 @@ main .row {
 main .row .content-block {
   display: flex;
   flex-flow: column nowrap;
-  width: 100svw;
+  width: 90svw;
   height: inherit;
   max-height: 450px;
   -moz-column-gap: 30px;
@@ -44,11 +51,11 @@ main .row .content-block .image-area {
   align-items: center;
   max-height: 450px;
   height: 100%;
+  border-radius: 8px;
 }
 main .row .content-block .image-area img {
   width: 100%;
   height: inherit;
-  border-radius: 8px;
   -o-object-fit: cover;
      object-fit: cover;
   transition: transform 400ms 0s;
@@ -108,20 +115,27 @@ main .row .content-block .desc-area .buttons *:hover {
 }
 
 @media only screen and (min-width: 1050px) {
-  main {
+  body {
+    margin-bottom: 40px;
+  }
+  body main {
     row-gap: 40px;
   }
-  main .row {
+  body main .row {
     overflow: visible;
   }
-  main .row .content-block {
+  body main .row .content-block {
     display: grid;
     width: 1000px;
   }
-  main .row .content-block .image-area {
+  body main .row .content-block .image-area {
     overflow: visible;
+    border-radius: 0px;
   }
-  main .row .content-block .desc-area {
+  body main .row .content-block .image-area img {
+    border-radius: 8px;
+  }
+  body main .row .content-block .desc-area {
     display: grid;
   }
 }/*# sourceMappingURL=turer.css.map */
