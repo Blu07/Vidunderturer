@@ -4,7 +4,7 @@ $background-color: rgb(251, 250, 235);
 
 $row-height: 450px;
 $content-narrow-width: 90svw;
-$content-wide-width: 1000px;
+$content-wide-width: 900px;
 
 $row-gap-narrow: 20px;
 $row-gap-wide: 40px;
@@ -26,8 +26,8 @@ html {
 }
 
 body {
-  // margin på sidene er 0px for at bildene går helt til siden.
   margin: 0px 0px $row-gap-narrow;
+  overflow-x: hidden;
 }
 
 .h1 {
@@ -78,7 +78,7 @@ main {
 
       .image-area {
         
-        // Bildet er i modten, og passer perfekt til rammen
+        // Bildet er i midten, og passer til rammen
         display: flex;
         overflow: hidden;
         box-sizing: border-box;
@@ -95,11 +95,11 @@ main {
           width: 100%;
           height: inherit;
           
+          object-fit: cover;
           
           // Større bilde når musepeker er over det
-          object-fit: cover;
-          transition: transform 400ms 0s;
           cursor: pointer;
+          transition: transform 400ms;
 
           &:hover {
             transform: scale(1.09);
@@ -177,22 +177,28 @@ main {
   }
 }
 
-// Om skjermen er bredere enn 50px mer enn innholdets bredde
-@media only screen and (min-width: calc($content-wide-width + 50px)) {
+// Om skjermen er bredere enn 100px mer enn innholdets bredde
+@media only screen and (min-width: calc($content-wide-width + 100px)) {
   body {
+    // Fra smal gap til bred gap
     margin-bottom: $row-gap-wide;
     
     main {
+      // Også her; Fra smal gap til bred gap
       row-gap: $row-gap-wide;
 
       .row {
+        // Fra hidden
         overflow: visible;
 
         .content-block {
+          // Fra flex
           display: grid;
+          // Fra 90svw
           width: $content-wide-width;
 
           .image-area {
+            // Fra hidden
             overflow: visible;
             border-radius: 0px;
 
@@ -202,10 +208,30 @@ main {
           }
 
           .desc-area {
+            // Fra none til grid
             display: grid;
           }
         }
       }
     }
   }
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 50px;
+  padding: 40px;
+  
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(74, 62, 62, 0.4);
+  border-radius: 20px;
+  padding: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  
 }

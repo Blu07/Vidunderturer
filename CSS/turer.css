@@ -5,6 +5,7 @@ html {
 
 body {
   margin: 0px 0px 20px;
+  overflow-x: hidden;
 }
 
 .h1 {
@@ -58,8 +59,8 @@ main .row .content-block .image-area img {
   height: inherit;
   -o-object-fit: cover;
      object-fit: cover;
-  transition: transform 400ms 0s;
   cursor: pointer;
+  transition: transform 400ms;
 }
 main .row .content-block .image-area img:hover {
   transform: scale(1.09);
@@ -114,7 +115,7 @@ main .row .content-block .desc-area .buttons *:hover {
   border-color: #18191a;
 }
 
-@media only screen and (min-width: 1050px) {
+@media only screen and (min-width: 1000px) {
   body {
     margin-bottom: 40px;
   }
@@ -126,7 +127,7 @@ main .row .content-block .desc-area .buttons *:hover {
   }
   body main .row .content-block {
     display: grid;
-    width: 1000px;
+    width: 900px;
   }
   body main .row .content-block .image-area {
     overflow: visible;
@@ -138,4 +139,19 @@ main .row .content-block .desc-area .buttons *:hover {
   body main .row .content-block .desc-area {
     display: grid;
   }
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 50px;
+  padding: 40px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(74, 62, 62, 0.4);
+  border-radius: 20px;
+  padding: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }/*# sourceMappingURL=turer.css.map */
