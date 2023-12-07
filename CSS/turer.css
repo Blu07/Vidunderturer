@@ -108,14 +108,15 @@ main .row .content-block .desc-area .buttons * {
   border: 2px solid #2881bd;
   border-radius: 5px;
   cursor: pointer;
-  transition: color 0.3s, border-color 0.3s;
+  transition: color 0.3s, border-color 0.3s, transform 0.3s;
 }
 main .row .content-block .desc-area .buttons *:hover {
   color: #18191a;
   border-color: #18191a;
+  transform: scale(1.09);
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: calc(900px + 10svw)) {
   body {
     margin-bottom: 40px;
   }

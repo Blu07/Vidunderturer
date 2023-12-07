@@ -164,11 +164,12 @@ main {
 
             // Endre farge når musepeker er over knappen
             cursor: pointer;
-            transition: color 0.3s, border-color 0.3s;
+            transition: color 0.3s, border-color 0.3s, transform 0.3s;
 
             &:hover {
               color: $color;
               border-color: $color;
+              transform: scale(1.09);
             }
           }
         }
@@ -178,7 +179,7 @@ main {
 }
 
 // Om skjermen er bredere enn 100px mer enn innholdets bredde
-@media only screen and (min-width: calc($content-wide-width + 100px)) {
+@media only screen and (min-width: calc($content-wide-width + (100svw - $content-narrow-width))) {
   body {
     // Fra smal gap til bred gap
     margin-bottom: $row-gap-wide;
